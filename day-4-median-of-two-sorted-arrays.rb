@@ -2,7 +2,6 @@
 # The overall run time complexity should be O(log (m+n)).
 
 
-
 def find_median_sorted_arrays(nums1, nums2)
   m, n = nums1.length, nums2.length
   if m > n
