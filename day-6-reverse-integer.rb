@@ -7,24 +7,14 @@
 def reverse(x)
   a = (-2**31)
   b = (2**31 - 1)
-  if x <= a || x >= b
+  if x < a || x == 0 || x > b
     return 0
-  elsif x.positive?
-      reverse_int = x.to_s.chars.reverse.join("").to_i
-      if reverse_int <= a || reverse_int <= b
-        return reverse_int
-      else
-        return 0
-      end
-  elsif x.negative?
-      neg_reverse_array = x.to_s.chars.drop(1).reverse
-      neg_reverse_int = neg_reverse_array.insert(0, "-").join("").to_i
-      if neg_reverse_int <= a || neg_reverse_int <= b
-        return neg_reverse_int
-      else
-        return 0
-      end
-  elsif x == 0
-    return 0
+  elsif x > 0 && x <= b
+    reverse_int = x.to_s.chars.reverse.join("").to_i
+    reverse_int > 0 && reverse_int <= b ? reverse_int : 0
+  elsif x < 0 && x>= a
+    neg_reverse_array = x.to_s.chars.drop(1).reverse
+    neg_reverse_int = neg_reverse_array.insert(0, "-").join("").to_i
+    neg_reverse_int >= a && neg_reverse_int < 0 ? neg_reverse_int : 0
   end
 end
