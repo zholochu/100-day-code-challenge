@@ -32,7 +32,6 @@ def letter_combinations(digits)
 
   backtrack("", digits, digit_letter, output)
   output
-
 end
 
 pp letter_combinations("232")
