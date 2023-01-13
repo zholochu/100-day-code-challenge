@@ -8,5 +8,10 @@
 # @return {Boolean}
 
 def is_happy(n)
-
+  result = []
+  until n == 1 || result.include?(n)
+    result << n
+    n = n.to_s.split("").map { |element| element.to_i ** 2 }.sum
+  end
+  n == 1
 end
