@@ -8,8 +8,7 @@ def rotate_string(s, goal)
     return false
   elsif !s.empty?
     total << s
-    s_length = s.length + 1
-    s_length.times do
+    s.length.times do
         s = s.chars
         first = s.first
         s.delete_at(0)
@@ -19,5 +18,3 @@ def rotate_string(s, goal)
     total.include?(goal) ? true : false
   end
 end
-
-pp rotate_string("abcde", "abced")
