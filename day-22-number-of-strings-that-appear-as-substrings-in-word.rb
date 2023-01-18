@@ -6,6 +6,6 @@
 
 def num_of_strings(patterns, word)
   result = 0
-  patterns.each { |element| result += 1 if word =~ /element/}
+  patterns.each { |element| result += 1 if word.include?(element) }
   result
 end
