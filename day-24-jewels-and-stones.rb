@@ -4,12 +4,9 @@
 # @param {String} stones
 # @return {Integer}
 def num_jewels_in_stones(jewels, stones)
-  stones = stones.chars
   total = 0
-  stones.each do |element|
-    if jewels.include?(element)
-      total += 1
-    end
+  stones.chars.each do |element|
+    total += 1 if jewels.include?(element)
   end
   total
 end
