@@ -6,27 +6,24 @@
 # "a" if a == b
 # @param {Integer[]} nums
 # @return {String[]}
-def summary_ranges(nums)
-  result = []
-  nums.each_index do |index|
-    if nums[index] + 1 == nums[index+1]
-      interim = [nums[index].to_s, "->", nums[index+1].to_s]
-      result << interim
-    else
-      result << nums[index].to_s
-    end
-  end
-  final = []
-  result.each do |element|
-    if element.length > 1
-      final << element.join
-    else
-      final << element
-    end
-  end
-  final
-end
 
+def summary_ranges(nums)
+  index = nil
+  result = []
+  return result if nums.empty?
+
+  (0...nums.length - 1).each do |element|
+    n = nums[element]
+    index ||= n
+    if nums[element+1] == n + 1
+    else
+      index != n ? result << "#{index}->#{n}" : result << "#{index}"
+      index = nil
+    end
+  end
+  index ? result << "#{index}->#{nums.last}" : result << nums.last.to_s
+  result
+end
 
 # Input: nums = [0,1,2,4,5,7]
 # Output: ["0->2","4->5","7"]
