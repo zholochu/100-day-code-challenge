@@ -4,5 +4,7 @@
 # @param {String[]} word2
 # @return {Boolean}
 def array_strings_are_equal(word1, word2)
-
+  word1 = word1.join
+  word2 = word2.join
+  word1 == word2
 end
