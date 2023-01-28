@@ -6,28 +6,11 @@
 # @param {Integer} k
 # @return {Integer}
 def largest_sum_after_k_negations(nums, k)
-  sorted_nums = nums.sort
-  if k.odd? && sorted_nums[0].negative?
-    index1 =
-  end
-
-  nums.include(0) ? smallest = 0 : smallest = nums[0]
-  nums.each do |element|
-    smallest = element if element < smallest
-  end
-  smallest_index = nums.index(smallest)
+  nums.sort!
+  index = 0
   k.times do
-    if nums[smallest_index].positive?
-      nums[smallest_index] = -nums[smallest_index]
-    elsif nums[smallest_index].negative?
-      nums[smallest_index] = nums[smallest_index]
-    end
+    nums[index] = - nums[index]
+    index += 1 if index < nums.size - 1 && nums[index] > nums[index + 1]
   end
-  result = 0
-  nums.each do |element|
-    result += element
-  end
-  return result
+  nums.sum
 end
-
-pp largest_sum_after_k_negations([3,-1,0,2],3)
