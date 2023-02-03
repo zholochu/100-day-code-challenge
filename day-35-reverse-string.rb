@@ -3,10 +3,8 @@
 # @param {Character[]} s
 # @return {Void} Do not return anything, modify s in-place instead.
 def reverse_string(s)
-
   index_l = 0
   index_r = s.size - 1
-
   while index_l < index_r
     s[index_r], s[index_l] = s[index_l], s[index_r]
     index_l += 1
