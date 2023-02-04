@@ -4,12 +4,22 @@
 # @param {String[]} arr
 # @return {Integer}
 def max_length(arr)
-  new_array = []
-  index = 0
-  string = ""
-  arr.length.times do
-    string = string + arr[index]
+  arr = arr.map { |s| s.chars.uniq.join }
+  arr.select! { |s| s.length == s.chars.uniq.length }
+  arr.sort_by! { |s| -s.length }
+  dp = []
+  arr.each do |s|
+    cur = []
+    s.each_char do |c|
+      if (dp + cur).uniq.join.include?(c)
+        cur = []
+      end
+      cur << c
+      dp = cur + dp
+    end
+    arr.delete(s)
   end
+  dp.join.length
 end
 
 pp max_length(["un","iq","ue","twq"])
