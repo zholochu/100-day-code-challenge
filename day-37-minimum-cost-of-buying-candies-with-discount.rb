@@ -18,10 +18,8 @@ def minimum_cost(cost)
     free = 0
     buy = []
     cost.each_index do |index|
-      if index == free_index && cost[index] != cost[-1]
+      if index == free_index
         free_index += 3
-      elsif cost[index] == cost[-1]
-        free = cost[index]
       else
         buy << cost[index]
       end
