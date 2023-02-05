@@ -5,33 +5,18 @@
 # @param {String} goal
 # @return {Boolean}
 def buddy_strings(s, goal)
-  s_array = s.chars
-  goal_array = goal.chars
-  result = s_array
+  return false if s.length != goal.length
+  not_match, match, repeated = [], Set[], false
 
-  if s.length != goal.length || s_array.uniq.join.sum != goal_array.uniq.join.sum || s.sum != goal.sum || s_array.uniq.eql?(goal_array.uniq)
-    false
-  elsif s_array.uniq.length == 1 && s_array.length != s_array.uniq.length
-    true
-  elsif s.length == goal.length && s.sum == goal.sum
-    not_match = []
-    s_array.each_index do |index|
-      if s_array[index].ord != goal_array[index].ord
-        not_match << s_array[index]
-      end
-    end
-    if not_match.length == 2 || not_match.empty? && s_array.uniq.length == s_array.length / 2
-      true
-    elsif not_match.empty? || not_match.length < 2 || not_match.length > 2
-      false
-    end
-  end
+  s.chars.zip(goal.chars) { |a,b|
+    repeated ||= !match.add?(a)
+    next if a == b
+    return false if not_match.length > 1
+    not_match << [a,b]
+  }
+
+  not_match.empty? ? repeated : not_match[0].reverse == not_match[-1]
 end
 
 pp buddy_strings("ab", "ab")
 pp buddy_strings("abcaa", "abcbb")
-
-# s = "arstna"
-# g = "arstan"
-
-b = ""
