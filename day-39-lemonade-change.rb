@@ -4,27 +4,27 @@
 # @param {Integer[]} bills
 # @return {Boolean}
 def lemonade_change(bills)
-  cash = []
-  price = 5
-  return false if cash.empty? && bills[0] > 5
-  cash_index = 0
-  bill_index = 0
-
-  bills.length.times do
-    if bills[bill_index] == price
-      cash << bills[bill_index]
-      bill_index += 1
-    elsif bills[bill_index] > price
-      change = bills[bill_index] - 5
-      change/5.times do
-        change - cash[cash_index].to_i
-        cash_index += 1
+  fives = 0
+  tens = 0
+  bills.each do |bill|
+      if bill == 5
+          fives += 1
+      elsif bill == 10
+          tens += 1
+          fives -= 1
+      elsif bill == 20
+          if tens > 0
+              tens -= 1
+              fives -= 1
+          else
+              fives -= 3
+          end
       end
-      # return false if change != 0
-    end
-    cash.empty? ? false : true
+      return false if fives < 0
   end
+  true
 end
+
 
 # Input: bills = [5,5,5,10,20]
 # Output: true
