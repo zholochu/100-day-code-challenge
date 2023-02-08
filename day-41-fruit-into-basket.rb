@@ -8,11 +8,11 @@
 # @return {Integer}
 def total_fruit(fruits)
   return fruits.length if fruits.uniq.length == 2 || fruits.uniq.length == 1 || fruits.empty?
-  result1 = []
-  result2 = []
+  result = fruits
+  tree2 = fruits[0]
   fruits.each_index do |index|
     if
   end
 end
 
-pp total_fruit([0,1,0,2])
+pp total_fruit([0,1,0,2,3,4,5,0,9,0,9,0,9,0,9,0])
