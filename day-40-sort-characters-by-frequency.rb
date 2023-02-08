@@ -5,13 +5,13 @@
 
 def frequency_sort(s)
   s_hash = s.chars.tally
-  string = ""
-  s_hash.sort_by{|k,v| -v}.each do |element|
+  string = ''
+  s_hash.sort_by{ |k, v| -v }.each do |element|
     element[1].times do
       string << element[0]
     end
   end
-  return string
+  string
 end
 
 # s = "abbA"

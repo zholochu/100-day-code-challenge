@@ -22,7 +22,6 @@ def simplify_path(path)
   else
     simple.join
   end
-  # return simple.empty? ? '/' : simple.join
 end
 
 pp simplify_path("/home/")
