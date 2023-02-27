@@ -6,10 +6,32 @@ def maximum_sum(nums)
   nums = nums.sort.map { |element| element.to_s.chars.map {|chr| chr.to_i}}
   a = 0
   b = 0
-  ind = 0
   length = nums.length
+  result = []
   nums.each_index do |index|
-
+    ind = 0
+    length.times do
+      interim_array = []
+      if index != ind && nums[index].sum == nums[ind].sum
+        interim_array << nums[index].join.to_i
+        interim_array << nums[ind].join.to_i
+        ind += 1
+      else
+        ind += 1
+      end
+      result << interim_array
+    end
+  end
+  result = result.uniq.map do |element|
+    element = element.sort
+  end
+  result = result.uniq.map do |element|
+    element = element.sum
+  end
+  if result.empty? || result.length == 1 && result[0] == 0
+    -1
+  else
+    result.sort[-1]
   end
 end
 
@@ -17,6 +39,8 @@ pp maximum_sum([18,43,36,13,7])
 pp maximum_sum([10,12,19,14])
 pp maximum_sum([4,6,10,6])
 pp maximum_sum([383,77,97,261,102,344,150,130,55,337,401,498,21,5])
+pp maximum_sum([10,12,19,14])
+pp maximum_sum([368,369,307,304,384,138,90,279,35,396,114,328,251,364,300,191,438,467,183])
 
 # Example 1:
 # Input: nums = [18,43,36,13,7]
