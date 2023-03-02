@@ -18,7 +18,7 @@
 # @param {ListNode} node
 # @return {Void} Do not return anything, modify node in-place instead.
 def delete_node(node)
-  node.val = node.next.val
+  node.value = node.next.value
   node.next = node.next.next
 end
 # Custom testing:
