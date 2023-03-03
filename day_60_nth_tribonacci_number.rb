@@ -4,7 +4,14 @@
 # @param {Integer} n
 # @return {Integer}
 def tribonacci(n)
-
+  result = [0,1,1]
+  index = 2
+  n.times do
+    tribonacci = result[index] + result[index-1] + result[index-2]
+    index += 1
+    result << tribonacci
+  end
+  result[n]
 end
 
 # Example 1:
