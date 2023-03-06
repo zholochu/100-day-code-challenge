@@ -5,22 +5,20 @@
 # @param {Integer[]} nums
 # @return {Integer}
 def find_peak_element(nums)
-  index = 1
-  peak = 0
-  length = nums.length - 2
-  if nums.length < 3
-    sorted = nums.sort
-    last = sorted.last
-    sorted.index(last)
-  elsif nums.length >= 3
-    length.times do
-      if nums[index] > nums[index+1] && nums[index] > nums[index-1] && index > peak
-        peak = index
-      end
-      index += 1
+  left = 0
+  right = nums.length - 1
+
+  while left < right
+    mid = (left + right) / 2
+
+    if nums[mid] > nums[mid+1]
+      right = mid
+    else
+      left = mid + 1
     end
   end
-  peak
+
+  return left
 end
 
 pp find_peak_element([1,2,3,1])
