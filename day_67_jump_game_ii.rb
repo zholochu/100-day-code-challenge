@@ -8,11 +8,9 @@
 def jump(nums)
   n = nums.size
   return 0 if n == 1
-
   jumps = 0
   current_end = 0
   farthest_end = 0
-
   (0...n).each do |i|
     farthest_end = [farthest_end, i + nums[i]].max
     if i == current_end
