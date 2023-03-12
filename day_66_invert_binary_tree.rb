@@ -11,10 +11,15 @@
 # @param {TreeNode} root
 # @return {TreeNode}
 def invert_tree(root)
-  result = [@val]
-  if root.empty?
-    root
-  end
+  return root if root.nil?
+
+  left = invert_tree(root.left)
+  right = invert_tree(root.right)
+
+  root.left = right
+  root.right = left
+
+  return root
 end
 
 pp invert_tree([4,2,7,1,3,6,9])
