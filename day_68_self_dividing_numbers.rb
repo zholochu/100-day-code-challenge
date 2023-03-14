@@ -8,7 +8,6 @@
 def self_dividing_numbers(left, right)
   array = (left..right).to_a
   final_array = []
-  array.each { |num| final_array << num if !num.to_s.include?("0")}
   array_ind = 0
   array.length.times do
     final_array << array[array_ind] if !array[array_ind].to_s.include?("0")
