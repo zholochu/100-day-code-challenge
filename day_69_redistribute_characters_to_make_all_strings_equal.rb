@@ -4,9 +4,8 @@
 # @param {String[]} words
 # @return {Boolean}
 def make_equal(words)
-  length = words.length
-  joined_length = words.join.length
-  joined_length % length == 0 || joined_length > 2 ? true : false
+  char_count = words.join("").each_char.with_object(Hash.new(0)) { |c, h| h[c] += 1 }
+  char_count.each_value.all? { |count| count % words.length == 0 }
 end
 
 pp make_equal(["abc","aabc","bc"])
