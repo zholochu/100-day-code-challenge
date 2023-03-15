@@ -3,13 +3,23 @@
 # @param {Integer} n
 # @return {Boolean}
 def is_ugly(n)
-  factors = []
-  (1..n).each do |i|
-    if n % i == 0
-      factors << i
-    end
+  if n <= 0
+    return false
   end
-  return factors
+
+  while n % 2 == 0
+    n /= 2
+  end
+
+  while n % 3 == 0
+    n /= 3
+  end
+
+  while n % 5 == 0
+    n /= 5
+  end
+
+  return n == 1
 end
 
 pp is_ugly(6)
