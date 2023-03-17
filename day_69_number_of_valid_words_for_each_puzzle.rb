@@ -9,36 +9,46 @@
 # @return {Integer[]}
 
 def find_num_of_valid_words(words, puzzles)
-  words = words.map { |word| word.chars.uniq.join }.uniq
+  # words = words.map { |word| word.chars.uniq.join }.uniq
+  words = words.map { |word| word.chars.uniq.join }
+  puzzles = puzzles.map { |word| word.chars.uniq.join }
   result = []
 
-  puzzles.each do |element|
+  ind1 = 0
+  ind1_length = puzzles.length
+  ind1_length.times do
+    first_char = puzzles[ind1][0]
     match = 0
 
-    words.each do |word|
-      counter = 0
-      length = word.length
-      index = 0
+    # words_length = words.length
+    # ind = 0
+    # words_length.times do
+    #   if words[ind].include?(first_char)
+    #     length = words[ind].length
+    #     counter = 0
+    #     index = 0
 
-      length.times do
-        if element.include?(word[index])
-          counter += 1
-          index += 1
-        else
-          index += 1
-        end
-      end
+    #     length.times do
+    #       if puzzles[ind1].include?(words[ind][index])
+    #         counter += 1
+    #       end
+    #       index += 1
+    #     end
 
-      if counter == length
-        match += 1
-      end
+    #     if counter == length
+    #       match += 1
+    #     end
+    #   end
+    #   ind += 1
+    # end
+    if puzzles[ind1] =~ /r.*n.*a/
 
-    end
 
     result << match
-
+    ind1 += 1
   end
-  words
+
+  result
 end
 
 # Example 1:
