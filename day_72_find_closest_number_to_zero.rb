@@ -8,7 +8,11 @@ def find_closest_number(nums)
   negative_small = negative_array[-1]
   positive_small = positive_array[0]
 
-  if positive_small == negative_small.abs
+  if negative_array.empty?
+    positive_small
+  elsif positive_array.empty?
+    negative_small
+  elsif positive_small == negative_small.abs
     positive_small
   else
     if positive_small < negative_small.abs
