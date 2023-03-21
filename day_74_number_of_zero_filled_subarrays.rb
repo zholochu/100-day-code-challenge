@@ -3,26 +3,18 @@
 # @param {Integer[]} nums
 # @return {Integer}
 def zero_filled_subarray(nums)
-  zero_counter = 0
-  # nums.each do |element|
-  #   zero_counter += 1 if element.zero?
-  # end
+  result = []
   index = 0
-  nums.length.times do
-    if nums[index] == 0
-      until nums[index] != 0
-        if nums[index] == 0
-          zero_counter += 1
-          index += 1
-        else
-          index += 1
-        end
-      end
-    else
+  while index < nums.length do
+    count = 0
+    while index < nums.length and nums[index].zero?
+      count += 1
       index += 1
     end
+    index += 1
+    result << count
   end
-  zero_counter
+  result.map { |element| element * (element + 1) / 2 }.sum
 end
 
 pp zero_filled_subarray([1,3,0,0,2,0,0,4])
