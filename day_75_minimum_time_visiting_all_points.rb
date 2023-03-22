@@ -9,8 +9,18 @@
 # @param {Integer[][]} points
 # @return {Integer}
 def min_time_to_visit_all_points(points)
+  total_time = 0
+  current_point = points[0]
 
+  points.each do |next_point|
+    time_to_next_point = [(current_point[0] - next_point[0]).abs, (current_point[1] - next_point[1]).abs].max
+    total_time += time_to_next_point
+    current_point = next_point
+  end
+
+  total_time
 end
+
 
 # Example 1:
 # Input: points = [[1,1],[3,4],[-1,0]]
