@@ -5,7 +5,7 @@
 def rotate(nums, k)
   a = nums[0..-1-k]
   b = nums[-k..-1]
-  result =  b + a
+  result = b + a
 end
 
 pp rotate([1,2,3,4,5,6,7], 3)
