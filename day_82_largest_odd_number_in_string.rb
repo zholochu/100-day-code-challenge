@@ -3,36 +3,15 @@
 # @param {String} num
 # @return {String}
 def largest_odd_number(num)
-  odd_array = []
-  if num.to_i.odd?
-    num
-  else
-    num1 = num
-    num2 = num
-
-    until num1.to_i.odd?
-      odd_array << num1[0..-2].to_i
-      num1 = num1[0..-2]
-    end
-
-    until num2.to_i.odd?
-      odd_array << num2[1..-1].to_i
-      num2 = num2[1..-1]
-    end
-
-    final_array = []
-    odd_array.each do |element|
-      if element.odd?
-        final_array << element
-      end
-    end
-    if final_array.empty?
-      ""
-    else
-      final_array.sort[-1].to_s
+  n = num.length
+  (n-1).downto(0) do |i|
+    if num[i].to_i.odd?
+      return num[0..i]
     end
   end
+  ""
 end
+
 
 pp largest_odd_number("52")
 pp largest_odd_number("4206")
