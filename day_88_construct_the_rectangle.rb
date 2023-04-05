@@ -6,7 +6,7 @@
 # @param {Integer} area
 # @return {Integer[]}
 def construct_rectangle(area)
-  counter = 0
+  counter = 1
   result = []
   until counter > area
     interim = []
