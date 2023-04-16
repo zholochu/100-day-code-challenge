@@ -1,7 +1,29 @@
 # Given an array of strings names of size n. You will create n folders in your file system such that, at the ith minute, you will create a folder with the name names[i].
 # Since two files cannot have the same name, if you enter a folder name that was previously used, the system will have a suffix addition to its name in the form of (k), where, k is the smallest positive integer such that the obtained name remains unique.
 # Return an array of strings of length n where ans[i] is the actual name the system will assign to the ith folder when you create it.
-
+# @param {String[]} names
+# @return {String[]}
+def get_folder_names(names)
+  counts = Hash.new(0)
+  result = []
+  names.each do |name|
+    if counts[name] == 0
+      result << name
+    else
+      i = counts[name]
+      new_name = "#{name}(#{i})"
+      while counts[new_name] > 0
+        i += 1
+        new_name = "#{name}(#{i})"
+      end
+      counts[name] = i
+      counts[new_name] = 1
+      result << new_name
+    end
+    counts[name] += 1
+  end
+  result
+end
 
 
 # Example 1:
